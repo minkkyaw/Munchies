@@ -153,7 +153,7 @@ const cartdisplay = currentCart => {
       else {
         document.querySelector(".invalid-text").textContent = "";
         console.log(totalPrice, email);
-        checkoutSession(email, toalPrice);
+        checkoutSession(email, totalPrice);
       }
     }
   });
