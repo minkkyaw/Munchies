@@ -2,7 +2,8 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRETE_KEY);
 const db = require("../models");
 const reservationData = require("../public/data/reservation.js");
-const Op = require("Sequelize").Op;
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 const makeReservation = (reservation, res) => {
   const {
