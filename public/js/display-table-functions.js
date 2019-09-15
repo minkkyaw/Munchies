@@ -1,3 +1,4 @@
+let categoryApi;
 const columnNameFormatter = columnName => {
   let captColumnName = columnName.toUpperCase();
   let indexArr = new Array();
@@ -60,20 +61,22 @@ const displayByCategory = async (categoryAndClass, searchQuery) => {
   document.querySelectorAll(".input-text").forEach(inputText => {
     {
       inputText.addEventListener("focus", e => {
-        initialValue = e.target.value;
+        initialValue = e.target.textContent;
       });
       inputText.addEventListener("focusout", e => {
         let id = parseInt(e.target.parentElement.parentElement.dataset.id);
         let columnName = e.target.dataset.column;
         let value = e.target.value;
-        if (initialValue !== e.target.value) {
+        categoryApi =
+          columnNameFormatter(columnName)
+            .split(" ")[0]
+            .toLowerCase() + "s";
+        if (initialValue !== value) {
           let idArr = new Array();
           updateArr.map(update => idArr.push(update.id));
-          console.log(idArr);
           if (idArr.includes(id)) {
             let index = idArr.indexOf(id);
             updateArr[index][columnName] = value;
-            console.log(updateArr[index]);
           } else {
             updateArr[i] = { id, [columnName]: value };
             i++;
@@ -85,6 +88,19 @@ const displayByCategory = async (categoryAndClass, searchQuery) => {
   document
     .querySelector(".reservation-update-btn")
     .addEventListener("click", e => {
+      let url = "/api/reservations/";
+      if (categoryApi) url = `/api/${categoryApi}/`;
       console.log(updateArr);
+      updateArr.map(updateData => {
+        fetch(url, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          },
+          body: JSON.stringify(updateData)
+        })
+          .then(res => res.json())
+          .then(res => console.log(res));
+      });
     });
 };

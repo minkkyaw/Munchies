@@ -1,4 +1,6 @@
-const stripe = Stripe("pk_test_BUkd0ZXAj6m0q0jMyRgBxNns00PPtgvjjr");
+const stripe = Stripe("pk_test_BUkd0ZXAj6m0q0jMyRgBxNns00PPtgvjjr", {
+  betas: ["checkout_beta_4"]
+});
 const hideAlert = () => {
   const el = document.querySelector(".alert");
   if (el) el.parentElement.removeChild(el);
@@ -14,16 +16,23 @@ const showAlert = (type, msg, time = 7) => {
 const checkoutSession = async (name, price) => {
   try {
     let session = await fetch(
-      `/api/v1/bookings/checkout-session/${name}/${price}`
+      `/api/bookings/checkout-session/${name}/${price}`
     );
     session = await session.json();
     await stripe.redirectToCheckout({
-      sessionId: session.data.session.id
+      items: [
+        // Replace with the ID of your SKU
+        { ["name"]: name, ["price"]: price }
+      ],
+      successUrl: "https://your-website.com/success",
+      cancelUrl: "https://your-website.com/canceled"
+      // sessionId: session.data.session.id
     });
   } catch (err) {
     showAlert("error", err);
   }
 };
+// checkoutSession("min", 100);
 
 const textReplace = (cartFormat, item, idx, x) => {
   const { id, name, price, quantity } = item;
