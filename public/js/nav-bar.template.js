@@ -55,10 +55,34 @@ let footerTemplate = `<div class="address-wrapper">
         </div>
         <div class="hoursOfOperation">
           <h2 id="hours">HOURS</h2>
-          <p>M-TH 9am - 10pm</p>
-          <p>Fri 9am - 12pm</p>
-          <p>Sat 10am - 12pm</p>
-          <p>Sun 10am - 9pm</p>
+          <table>
+            <tbody>
+              <tr>
+                <td style="text-align: left">Tuesday-Thursday</td>
+                <td style="text-align: right">9am</td>
+                <td style="text-align: right">-</td>
+                <td style="text-align: right">10pm</td>
+              </tr>
+              <tr>
+                <td style="text-align: left">Friday</td>
+                <td style="text-align: right">9am</td>
+                <td style="text-align: right">-</td>
+                <td style="text-align: right">12pm</td>
+              </tr>
+              <tr>
+                <td style="text-align: left">Saturday</td>
+                <td style="text-align: right">10am</td>
+                <td style="text-align: right">-</td>
+                <td style="text-align: right">12pm</td>
+              </tr>
+              <tr>
+                <td style="text-align: left">Sunday</td>
+                <td style="text-align: right">10am</td>
+                <td style="text-align: right">-</td>
+                <td style="text-align: right">9pm</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="sign-up-wrapper">
           <h2>KEEP IN TOUCH</h2>
