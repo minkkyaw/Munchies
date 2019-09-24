@@ -100,13 +100,21 @@ let footerTemplate = `<div class="address-wrapper">
       <hr />
       <ul class="credits">
         <li class="credit-item"><a class="credit-link" href="">Nicholas</a></li>
-        <li class="credit-item"><a class="credit-link" href="">Rebeacca</a></li>
+        <li class="credit-item">
+          <a 
+            class="credit-link" 
+            href="https://rebeacca.github.io/finalProfile/"
+          >
+            Rebeacca
+          </a>
+        </li>
         <li class="credit-item">
           <a
             class="credit-link"
             href="https://minkkyaw.github.io/Responsive-Portfolio"
-            >Min</a
           >
+            Min
+          </a>
         </li>
       </ul>`;
 document.querySelector(".nav-bar").innerHTML = navBarTemplate;
