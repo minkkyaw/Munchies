@@ -104,6 +104,7 @@ let footerTemplate = `<div class="address-wrapper">
           <a 
             class="credit-link" 
             href="https://rebeacca.github.io/finalProfile/"
+            target="_blank"
           >
             Rebeacca
           </a>
@@ -111,7 +112,8 @@ let footerTemplate = `<div class="address-wrapper">
         <li class="credit-item">
           <a
             class="credit-link"
-            href="https://minkkyaw.github.io/Responsive-Portfolio"
+            href="https://minkyaw.herokuapp.com/"
+            target="_blank"
           >
             Min
           </a>
